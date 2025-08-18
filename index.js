@@ -4,15 +4,14 @@ const methodOverride = require("method-override");
 const path = require("path");
 require("dotenv").config();
 
-
-const Chat = require("./models/chat.js");
+const Chat = require("../models/chat.js"); // 👈 go up one level, since api/index.js is inside /api
 
 const app = express();
 
 // Middleware
-app.set("views", path.join(__dirname, "../views"));
+app.set("views", path.join(process.cwd(), "views")); // views at project root
 app.set("view engine", "ejs");
-app.use(express.static(path.join(__dirname, "../public")));
+app.use(express.static(path.join(process.cwd(), "public"))); // public at project root
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 
@@ -61,7 +60,6 @@ app.post("/chats", async (req, res) => {
     created_at: new Date(),
   });
   await newChat.save();
-  console.log("Chat was Saved");
   res.redirect("/chats");
 });
 
@@ -76,25 +74,16 @@ app.put("/chats/:id", async (req, res) => {
   await connectDB();
   let { id } = req.params;
   let { msg: newMsg } = req.body;
-  let updateChat = await Chat.findByIdAndUpdate(
-    id,
-    { msg: newMsg },
-    { runValidators: true, new: true }
-  );
-  console.log(updateChat);
+  await Chat.findByIdAndUpdate(id, { msg: newMsg }, { runValidators: true, new: true });
   res.redirect("/chats");
 });
 
 app.delete("/chats/:id", async (req, res) => {
   await connectDB();
   let { id } = req.params;
-  let deletedChat = await Chat.findByIdAndDelete(id);
-  console.log(deletedChat);
+  await Chat.findByIdAndDelete(id);
   res.redirect("/chats");
 });
 
-// 👇 Export Express app as Vercel handler
-module.exports = (req, res) => {
-  return app(req, res);
-};
-
+// 👇 Export Express app for Vercel
+module.exports = app;
