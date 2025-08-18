@@ -86,4 +86,7 @@ app.delete("/chats/:id", async (req, res) => {
 });
 
 // 👇 Export Express app as Vercel handler
-module.exports = app;
+module.exports = (req, res) => {
+  return app(req, res);
+};
+
