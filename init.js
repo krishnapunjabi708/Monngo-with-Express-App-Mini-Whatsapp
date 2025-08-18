@@ -1,22 +1,20 @@
-const mongoose=require("mongoose");
-const Chat=require("./models/chat.js");
+const mongoose = require("mongoose");
+const Chat = require("./models/chat.js");
 require("dotenv").config(); 
 const uri = process.env.MONGO_URI;
-main().then(()=>{
-    console.log("connection successful");
-}).catch(err => console.log(err));
 
-    // main()
-    //   .then(() => {
-    //     console.log("Connection successful!");
-    //   })
-    //   .catch((err) => console.log(err));
+async function main() {
+  try {
+    await mongoose.connect(uri);
+    console.log("Connection successful!");
+  } catch (err) {
+    console.error(err);
+  }
+}
 
-    // async function main() {
-    //   await mongoose.connect(uri);
-    // }
+main();
 
-// Chat.insertMany([  
+// Chat.insertMany([ 
 //   {
 //     from: "priya",
 //     to: "neha",
@@ -131,5 +129,3 @@ main().then(()=>{
 //     msg: "sure, ping me anytime",
 //     created_at: new Date()
 //   }]);
-
-
