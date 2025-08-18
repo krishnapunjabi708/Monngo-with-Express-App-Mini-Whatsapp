@@ -1,20 +1,16 @@
-const mongoose = require("mongoose");
-const Chat = require("./models/chat.js");
-require("dotenv").config(); 
-const uri = process.env.MONGO_URI;
+// const mongoose=require("mongoose");
+// const Chat=require("./models/chat.js");
 
-async function main() {
-  try {
-    await mongoose.connect(uri);
-    console.log("Connection successful!");
-  } catch (err) {
-    console.error(err);
-  }
-}
+// main().then(()=>{
+//     console.log("connection successful");
+// }).catch(err => console.log(err));
+// async function main() {
+//   await mongoose.connect('mongodb://127.0.0.1:27017/Whatsapp');
 
-main();
+//   // use `await mongoose.connect('mongodb://user:password@127.0.0.1:27017/test');` if your database has auth enabled
+// }
 
-// Chat.insertMany([ 
+// Chat.insertMany([  
 //   {
 //     from: "priya",
 //     to: "neha",
@@ -129,3 +125,5 @@ main();
 //     msg: "sure, ping me anytime",
 //     created_at: new Date()
 //   }]);
+
+
