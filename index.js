@@ -64,6 +64,15 @@ let updateChat=await Chat.findByIdAndUpdate(id,{msg : newMsg},{runValidators:tru
 console.log(updateChat);
 res.redirect("/chats");
 });
+
+// DELETE or Destroy the Route
+app.delete("/chats/:id",async (req,res)=>{
+let { id }=req.params;
+let deletedChat=await Chat.findByIdAndDelete(id);
+console.log(deletedChat);
+res.redirect("/chats");
+});
+
 async function main() {
   await mongoose.connect('mongodb://127.0.0.1:27017/Whatsapp');
 
