@@ -6,7 +6,7 @@ const Chat=require("./models/chat.js");
 app.set("views",path.join(__dirname,"views"));
 app.set("view engine","ejs");
 app.use(express.static(path.join(__dirname,"public"))); //to connect the styleheet to ejs
-
+app.use(express.urlencoded({ extended:true }));
 main().then(()=>{
     console.log("connection successful");
 }).catch(err => console.log(err));
@@ -26,6 +26,25 @@ app.get("/chats/new",(req,res)=>{
 res.render("new.ejs");
 });
 
+// Create Route
+app.post("/chats",(req,res)=>{
+let {from,to,msg}=req.body;
+let newChat=new Chat({
+  from:from,
+  to:to,
+  msg:msg,
+  created_at:new Date()
+});
+newChat.
+      save().
+      then((res)=>{
+         console.log("Chat was Saved");
+        }).catch((err)=>{
+          consol.log(err);
+        });
+
+res.redirect("/chats");
+});
 
 async function main() {
   await mongoose.connect('mongodb://127.0.0.1:27017/Whatsapp');
