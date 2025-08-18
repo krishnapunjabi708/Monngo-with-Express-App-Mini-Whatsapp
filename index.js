@@ -21,6 +21,10 @@ res.render("index.ejs",{ chats });
 
 });
 
+// New Route
+app.get("/chats/new",(req,res)=>{
+res.render("new.ejs");
+});
 
 
 async function main() {

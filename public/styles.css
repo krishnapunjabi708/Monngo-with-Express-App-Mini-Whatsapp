@@ -2,15 +2,18 @@ body{
     margin-left: 20px;
 }
 .message{
-    padding: 20px;
+    padding: 2px;
     background-color: antiquewhite;
     font-family: 'Courier New', Courier, monospace;
     font-size: medium;
     font-weight: bold;
+    border-radius: 200px;
     
 }
 .chat{
     background-color: beige;
+    padding: 5px;
+    display: inline-block;
 }
 h3{
     text-align: center;
