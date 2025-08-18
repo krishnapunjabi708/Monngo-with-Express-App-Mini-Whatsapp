@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 const path=require("path");
 const mongoose=require("mongoose");
+require("dotenv").config(); 
+const uri = process.env.MONGO_URI;
 const methodOverride=require("method-override");
 
 const Chat=require("./models/chat.js");
@@ -73,11 +75,16 @@ console.log(deletedChat);
 res.redirect("/chats");
 });
 
-async function main() {
-  await mongoose.connect('mongodb://127.0.0.1:27017/Whatsapp');
 
-  // use `await mongoose.connect('mongodb://user:password@127.0.0.1:27017/test');` if your database has auth enabled
-}
+    main()
+      .then(() => {
+        console.log("Connection successful!");
+      })
+      .catch((err) => console.log(err));
+
+    async function main() {
+      await mongoose.connect(uri);
+    }
 
 // let chat1=new Chat({
 //   from:"neha",
@@ -94,6 +101,7 @@ res.send("Server is working")
 });
 
 
-app.listen(8080, () => {
-  console.log("Server is Running on Server 8080");
+const port = process.env.PORT || 8080;
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
 });
