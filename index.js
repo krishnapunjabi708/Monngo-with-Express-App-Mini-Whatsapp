@@ -5,7 +5,7 @@ const path = require("path");
 require("dotenv").config();
 
 
-const Chat = require("../models/chat.js");
+const Chat = require("./models/chat.js");
 
 const app = express();
 
