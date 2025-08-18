@@ -1,22 +1,65 @@
-body{
-    margin-left: 20px;
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5;
+    margin: 0;
+    padding: 20px;
 }
-.message{
-    padding: 2px;
-    background-color: antiquewhite;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: medium;
-    font-weight: bold;
-    border-radius: 200px;
-    
-}
-.chat{
-    background-color: beige;
-    padding: 5px;
-    display: inline-block;
-}
-h3{
+
+h3 {
     text-align: center;
-    font-size:xx-large;
-    background-color: rgb(194, 162, 139);
+    color: #075e54;
+    margin-bottom: 20px;
+}
+
+button {
+    background-color: #25d366;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #1ebe5b;
+}
+
+.chat {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    padding: 15px;
+    margin: 15px auto;
+    max-width: 600px;
+    border-left: 5px solid #25d366;
+}
+
+.chat p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.chat b {
+    color: #075e54;
+}
+
+.message {
+    background-color: #dcf8c6;
+    padding: 10px;
+    border-radius: 8px;
+    margin: 10px 0;
+    font-size: 15px;
+}
+
+hr {
+    border: none;
+    height: 1px;
+    background-color: #ddd;
+    margin: 10px 0;
+}
+
+form {
+    display: inline;
 }
