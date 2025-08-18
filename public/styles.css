@@ -1,0 +1,19 @@
+body{
+    margin-left: 20px;
+}
+.message{
+    padding: 20px;
+    background-color: antiquewhite;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: medium;
+    font-weight: bold;
+    
+}
+.chat{
+    background-color: beige;
+}
+h3{
+    text-align: center;
+    font-size:xx-large;
+    background-color: rgb(194, 162, 139);
+}
